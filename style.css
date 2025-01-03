@@ -100,3 +100,41 @@ main {
     color: white;
     cursor: pointer;
 }
+
+/* CAPTCHA */
+.captcha-container {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+.captcha {
+    background-color: #d3d3d3;
+    padding: 0.5rem;
+    font-style: italic;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1.2rem;
+    color: #333333;
+    user-select: none;
+    width: 150px;
+    text-align: center;
+    letter-spacing: 2px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.captcha-input {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+}
+
+.error {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    display: none;
+}

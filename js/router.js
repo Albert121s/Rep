@@ -48,13 +48,35 @@ function RenderContactPage() {
             <input type="email" id="email" name="email" required>
             <label for="message">Message:</label>
             <textarea id="message" name="message" required></textarea>
+            <div class="captcha-container">
+                <div id="captcha" class="captcha"></div>
+                <input type="text" id="captcha-input" class="captcha-input" placeholder="Enter CAPTCHA" required>
+            </div>
+            <div id="captcha-error" class="error">Incorrect CAPTCHA, please try again.</div>
             <button type="submit">Send</button>
         </form>
     `;
-    document.getElementById('contact-form').addEventListener('submit', (event) => {
-        event.preventDefault();
-        alert('Form submitted!');
-    });
+    generateCaptcha();
+    document.getElementById('contact-form').addEventListener('submit', handleFormSubmit);
+}
+
+function generateCaptcha() {
+    const captchaText = Math.random().toString(36).substring(2, 8).toUpperCase();
+    document.getElementById('captcha').textContent = captchaText;
+}
+
+function handleFormSubmit(event) {
+    event.preventDefault();
+    const captcha = document.getElementById('captcha').textContent;
+    const captchaInput = document.getElementById('captcha-input').value.toUpperCase();
+
+    if (captcha !== captchaInput) {
+        document.getElementById('captcha-error').style.display = 'block';
+        generateCaptcha();
+    } else {
+        document.getElementById('captcha-error').style.display = 'none';
+        alert('Form submitted successfully!');
+    }
 }
 
 function RenderGalleryPage() {
